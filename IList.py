@@ -21,7 +21,7 @@ class IList:
             temp.next = self.head
             self.head = temp
 
-    # hi
+    # bye
     def has_val(self, val):
         curr_node = self.head
         has_val = False
