@@ -35,6 +35,7 @@ class BSTInt:
                         curr.right = temp
 
                     curr = curr.right
+        self.print_path(val)
         return None
 
     def remove(self, val):
@@ -43,6 +44,7 @@ class BSTInt:
         Args:
             val: The interger value to be removed
         """
+        self.print_path(val)
         self.remove_recur(self.root, val)
         return None
 
@@ -111,4 +113,27 @@ class BSTInt:
         print(root.data)
         self.in_order_recur(root.right)
 
+        return None
+
+    def height(self):
+        return self.height_recur(self.root)
+
+    def height_recur(self, root):
+        if root == None:
+            return 0
+
+        else:
+            left_height = self.height_recur(root.left)
+            right_height = self.height_recur(root.right)
+
+            return left_height + 1 if left_height > right_height else right_height + 1
+
+    def print_path(self, val):
+        if self.find(val):
+            curr = self.root
+            print(curr.data, " ")
+
+            while curr != None and curr.data != val:
+                curr = curr.left if val < curr.left else curr.right
+                print(curr.data, " ")
         return None
