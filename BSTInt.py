@@ -4,7 +4,7 @@ class Node:
         self.right = self.left = None  # A new node will have no children
 
 
-class BST_int:
+class BSTInt:
     def __init__(self):
         self.root = None
 
