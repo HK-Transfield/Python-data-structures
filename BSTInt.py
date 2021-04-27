@@ -59,7 +59,7 @@ class BSTInt:
         if curr == None:
             return root
 
-        if curr.left == None and curr.right == None:
+        if curr.left == None and curr.right == None:  # Case 1: Removed node has no children
             if curr != root:
                 if parent.left == curr:
                     parent.left = None
@@ -67,13 +67,13 @@ class BSTInt:
                     parent.right = None
             else:
                 root = None
-        elif curr.left != None and curr.right != None:
+        elif curr.left != None and curr.right != None:  # Case 2: Removed node has two children
             successor = self.minimum_key(curr.right)
 
             self.remove_recur(root, successor.key)
 
             curr.key = successor.key
-        else:
+        else:  # Case 3: Removed node has one child
             child = curr.left if curr.left != None else curr.right
 
             if curr != root:
