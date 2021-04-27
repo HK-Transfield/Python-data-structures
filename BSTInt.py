@@ -6,10 +6,15 @@ class Node:
 
 class BSTInt:
     def __init__(self):
+        """Constructor."""
         self.root = None
 
     def insert(self, val):
-        """Inserts a new value into the BST"""
+        """Inserts a new value into the BST.
+
+        Args:
+            val: The integer value to be inserted into the BST.
+        """
         temp = Node(val)
 
         if self.root == None:
@@ -33,12 +38,17 @@ class BSTInt:
         return None
 
     def remove(self, val):
+        """Traverses the BST and removes an interger value from the BST.
+
+        Args:
+            val: The interger value to be removed
+        """
         self.remove_recur(self.root, val)
         return None
 
     def remove_recur(self, root, val):
-        curr = root
-        parent = None
+        curr = root     # Start at the beginning of the BST
+        parent = None   # The parent of the node that will be removed
 
         while curr != None and curr.key != val:
             parent = curr
@@ -84,5 +94,21 @@ class BSTInt:
     def find(self, val):
         curr = self.root
 
-        while curr != None and curr.key != val:
+        while curr != None and curr.data != val:
             curr = curr.left if val < curr.left else curr.right
+
+        return not curr == None
+
+    def dump(self):
+        self.in_order_recur(self.root)
+        return None
+
+    def in_order_recur(self, root):
+        if root == None:
+            return None
+
+        self.in_order_recur(root.left)
+        print(root.data)
+        self.in_order_recur(root.right)
+
+        return None
